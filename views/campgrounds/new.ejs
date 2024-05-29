@@ -1,0 +1,48 @@
+<% layout('/layout/skaliton') %>
+
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/campground" method='POST' novalidate class="validation" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-lable" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid camp title.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-lable" for="location">location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid location.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Add image</label>
+                    <input class="form-control" type="file" name="image" id="image" multiple>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-lable">$</span>
+                        <input type="text" class="form-control" placeholder="0.0" aria-label="price"
+                            aria-describedby="price-lable" name="campground[price]" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid price.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-lable" for="description">description</label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]"
+                        required></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add campground</button>
+                </div>
+                <a href="/campground">All campground</a>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,41 @@
+<% layout('/layout/skaliton') %>
+<div id="cluster-map"></div>
+
+    <h1> all campgrounds</h1>
+
+    <% for(let camp of campgrounds){ %>
+        <div class="card mb-4 icard">
+            <div class="row">
+                <div class="col-md-4">
+                    <% if(camp.image.length) {%> 
+                    <img src="<%=camp.image[0].url%>" height="200px" width="100%" alt="" class="img-fluid">
+                    <% }else {%>
+                    <img src="https://cdn.wallpapersafari.com/94/21/wfjsCD.png" height="200px" width="100%" alt="" class="img-fluid">
+                        <% } %> 
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=camp.title%>
+                        </h5>
+                        <p class="card-text">
+                            <%=camp.description%>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%=camp.location%>
+                            </small>
+                        </p>
+                        <a href="/campground/<%=camp._id %> " class="btn btn-primary">view <%=camp.title %> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+            <a href="/campground/new"><button>new</button></a>
+
+            <script>
+                const maptoken='<%-process.env.mapbox%>';
+                const camp={features:<%-JSON.stringify(campgrounds)%>};
+            </script>
+            <script src="/js/cluster.js"></script>
